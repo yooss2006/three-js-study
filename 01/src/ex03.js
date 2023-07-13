@@ -5,11 +5,15 @@ export default function example() {
   const renderer = new THREE.WebGLRenderer({
     canvas,
     antialias: true,
+    alpha: true,
   });
+  renderer.setClearColor(0x00ff00);
+  renderer.setClearAlpha(0.5); //0~1 값을 넣을 수 있다. 0은 투명, 1은 불투명
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio > 1 ? 2 : 1);
 
   const scene = new THREE.Scene();
+  scene.background = new THREE.Color("blue");
 
   const camera = new THREE.PerspectiveCamera(
     75,
