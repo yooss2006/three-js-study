@@ -36,14 +36,14 @@ export default function example() {
 
   scene.add(mesh);
 
-  const clock = new THREE.Clock();
+  let oldTime = Date.now(); //구 시간, 밀리초 단위
 
   function draw() {
-    const time = clock.getElapsedTime();
-    // mesh.rotation.y += 0.1;
-    // mesh.rotation.y += THREE.MathUtils.degToRad(1);
-    mesh.rotation.y = time;
-    mesh.position.y += 0.01;
+    const newTime = Date.now();
+    const deltaTime = newTime - oldTime;
+    oldTime = newTime;
+    mesh.rotation.y += deltaTime * 0.005;
+    mesh.position.y += deltaTime * 0.002;
     if (mesh.position.y > 3) {
       mesh.position.y = 0;
     }

@@ -39,11 +39,11 @@ export default function example() {
   const clock = new THREE.Clock();
 
   function draw() {
-    const time = clock.getElapsedTime();
+    const delta = clock.getDelta(); //draw 함수가 실행될 때마다의 시간차
     // mesh.rotation.y += 0.1;
     // mesh.rotation.y += THREE.MathUtils.degToRad(1);
-    mesh.rotation.y = time;
-    mesh.position.y += 0.01;
+    mesh.rotation.y += delta;
+    mesh.position.y += delta;
     if (mesh.position.y > 3) {
       mesh.position.y = 0;
     }
